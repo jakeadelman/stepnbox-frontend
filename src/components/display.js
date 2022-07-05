@@ -11,7 +11,7 @@ export default function Display(){
         console.log(lvl)
         console.log("sending")
 
-        fetch("http://localhost:5000/record/find/"+ lvl.toString(), {
+        fetch(process.env.REACT_APP_API_ENDPOINT+"/record/find/"+ lvl.toString(), {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -72,7 +72,7 @@ export default function Display(){
         <div>
             <div className="containdisplay">
                 <section className="display-first">
-            <div className="display-first-wrap">
+                     <div className="display-first-wrap">
                     <div className="inner-display-first">
                         <p>Box Level</p>
                         <div>
