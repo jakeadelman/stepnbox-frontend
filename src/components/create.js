@@ -31,10 +31,7 @@ export default function Page() {
   if (create == false) {
     return (
       <div className="vh">
-        <img
-          src={require("../assets/images/bottom.png")}
-          className="back-img"
-        />
+        <div className="back-img" src="../assets/images/white.jpg" />
         <div className="outer">
           <header>
             <img src={require("../assets/images/stepnbox.png")} />
@@ -42,7 +39,7 @@ export default function Page() {
           <ul className="menu">
             <li className="item item1">Box Data</li>
             <li className="item item2" onClick={() => createSwitch()}>
-              Create Box
+              Enter Box
             </li>
           </ul>
 
@@ -69,10 +66,6 @@ export default function Page() {
   } else if (create == true) {
     return (
       <div className="vh">
-        <img
-          src={require("../assets/images/bottom.png")}
-          className="back-img"
-        />
         <div className="outer">
           <header>
             <img src={require("../assets/images/stepnbox.png")} />
@@ -81,7 +74,7 @@ export default function Page() {
             <li className="item item1" onClick={() => createSwitch()}>
               Box Data
             </li>
-            <li className="item item2">Create Box</li>
+            <li className="item item2">Enter Box</li>
           </ul>
 
           <Create />
@@ -120,11 +113,8 @@ function Create() {
       <div class="enter">
         <section class="entersection">
           <div class="title-section">
-            <h2>Enter New Mystery Box Details</h2>
-            <p>
-              Enter a new mystery box you just recieved. We use community data
-              gathered here to display box level data above.
-            </p>
+            <h2>Enter Mystery Box</h2>
+            <p>Enter a new mystery box to help us gather data.</p>
           </div>
         </section>
         <div class="containing-all">
@@ -208,11 +198,8 @@ function Create() {
       <div class="enter">
         <section class="entersection">
           <div class="title-section">
-            <h2>Enter New Mystery Box Details</h2>
-            <p>
-              Enter a new mystery box you just recieved. We use community data
-              gathered here to display box level data above.
-            </p>
+            <h2>Enter Myster Box</h2>
+            <p>Enter a new mystery box to help us gather data.</p>
           </div>
         </section>
         <div class="containing-all">
@@ -296,11 +283,8 @@ function Create() {
       <div class="enter">
         <section class="entersection">
           <div class="title-section">
-            <h2>Enter New Mystery Box Details</h2>
-            <p>
-              Enter a new mystery box you just recieved. We use community data
-              gathered here to display box level data above.
-            </p>
+            <h2>Enter Mystery Box</h2>
+            <p>Enter a new mystery box to help us gather data.</p>
           </div>
         </section>
         <div class="containing-all">

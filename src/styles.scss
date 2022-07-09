@@ -1,10 +1,18 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@500&display=swap');
 
+html{
+    background:url(/assets/images/back8.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
 
 
 *{
-    font-family: 'Space Grotesk', sans-serif;
-    font-weight:300;
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight:500;
 }
 
 body{
@@ -66,7 +74,6 @@ input[type=number] {
     display:flex;
     flex-wrap:wrap;
     padding:20px 0px;
-    height:190px;
     overflow-y: auto
 }
 
@@ -138,7 +145,7 @@ label{
 }
 .entersection h2{
     margin:20px auto;
-    font-weight:300;
+    font-weight:500;
 }
 
 
@@ -191,6 +198,7 @@ label{
 .inner-display-second{
     width:50%;
     margin:auto;
+    font-size:18px;
 }
 
 .string-row{
@@ -224,7 +232,7 @@ label{
 .string-col-1{
     text-align:right;
     width:15%;
-    
+    margin-left:20px;
 }
 .string-col-1 div{
     font-weight:500;
@@ -291,7 +299,7 @@ header img{
     color:#19a5ae;
 }
 .menu .item{
-
+    font-size:20px;
     font-weight:500;
 }
 // .menu .item1{
@@ -377,6 +385,7 @@ footer .inside-footer .donate2{
 .title-section p {
     width:700px;
     margin-bottom:25px;
+    font-weight:300;
 }
 .donate{
     cursor:pointer;
@@ -409,7 +418,7 @@ footer .inside-footer .donate2{
 }
 
 .no-data-inner{
-   margin: auto auto auto 40px;
+    margin: auto auto auto 130px
 }
 
 .no-data{
@@ -451,7 +460,15 @@ col2form{
     .col1form,.col2form{
         width:50%;
     }
-
+    .display-first-wrap{
+        width:30%;
+    }
+    .inner-display-second{
+        width:70%;
+    }
+    .inner-display-first{
+        margin: auto 60px auto auto;
+    }
 
 }
 
