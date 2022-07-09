@@ -158,6 +158,7 @@ const DisplayData = ({ values }) => {
   const [newstrings, setNewStrings] = useState([]);
   useEffect(() => {
     setNewStrings(strings);
+    // console.log(newstrings);
     setStrings([]);
   }, [values]);
 
@@ -191,10 +192,11 @@ const DisplayData = ({ values }) => {
       }
     }
     // return(strings)
+    console.log(newstrings);
   }, [values]);
 
   if (values[0]) {
-    console.log(values);
+    // console.logs(strings);
     return (
       // <div></div>
       <div className="string-row">
@@ -389,7 +391,7 @@ const GetIcon = ({ string }) => {
         </div>
       );
     }
-    if (str.includes("level 3 efficiency")) {
+    if (str.includes("lvl 3 efficiency")) {
       content14 = (
         <div className="with-icon">
           {str}{" "}
@@ -400,7 +402,7 @@ const GetIcon = ({ string }) => {
         </div>
       );
     }
-    if (str.includes("level 3 resillience")) {
+    if (str.includes("lvl 3 resillience")) {
       content15 = (
         <div className="with-icon">
           {str}{" "}
@@ -411,7 +413,7 @@ const GetIcon = ({ string }) => {
         </div>
       );
     }
-    if (str.includes("level 3 comfort")) {
+    if (str.includes("lvl 3 comfort")) {
       content16 = (
         <div className="with-icon">
           {str}{" "}
@@ -422,7 +424,7 @@ const GetIcon = ({ string }) => {
         </div>
       );
     }
-    if (str.includes("level 3 luck")) {
+    if (str.includes("lvl 3 luck")) {
       content17 = (
         <div className="with-icon">
           {str}{" "}

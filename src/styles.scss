@@ -142,12 +142,22 @@ label{
 }
 
 
+.back-img{
+    position:absolute;
+    right:0;
+    bottom:0;
+    width:100vw;
+
+}
+
 .bottomimg{
     width:100%;
 }
 
 .enter{
     padding:30px;
+    padding: 40px 100px 100px 100px;
+    margin-bottom:100px;
 }
 .containing-boxes p{
     text-align:center;
@@ -180,6 +190,7 @@ label{
 }
 .inner-display-second{
     width:50%;
+    margin:auto;
 }
 
 .string-row{
@@ -264,50 +275,40 @@ header{
     display:relative;
     padding-bottom:50px;
     padding-top: 30px;
-    background:#d3ecf0;
 }
 header img{
     display:block;
     margin:0 auto;
 }
+.menu{
 
-.row{
-    width:100%;
-    padding:0;
-    margin:0;
-    margin-top:120px;
+    list-style-type: none;
+    width: fit-content;
+    margin: auto;
     display: flex;
-    justify-content: center;
-    flex-direction: column;
-    position:relative;
-  }
-  
-  /* -- SVG CSS -- */
-  
-  .svg-separator{
-    display: block;
-    background: 0 0;
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    z-index: 9;
-    -webkit-transform: translateY(-100%) translateY(2px);
-    transform: translateY(-100%) translateY(2px);
-    width: 100%;
-  }
-  .svg-separator.bottom{
-    top: auto;
-    bottom: 0;
-  }
- 
-  .sep6 {
-    transform: translateY(-100%) translateY(2px) scale(1,1);
-    transform-origin: top;
-    background:linear-gradient(#d3ecf0,white);
     padding:0px;
-    margin:0px
-  }
+    cursor:pointer;
+    color:#19a5ae;
+}
+.menu .item{
+
+    font-weight:500;
+}
+// .menu .item1{
+
+//     border-right:1px solid black;
+//     padding-right:20px;
+// }
+.menu .item2{
+
+    font-weight:500;
+    margin-left:20px;
+}
+.menu .item:hover{
+
+    color:black;
+}
+
 
 
   .thisone{
@@ -328,7 +329,10 @@ footer{
     padding:10px;
     margin-top: 20px;
     height: 100px;
-    position:relative;
+    position:fixed;
+    width:320px;
+    left:50%;
+    transform:translate(-50%);
 
     
 }
@@ -337,7 +341,7 @@ footer{
     display:flex;
     position: absolute;
     bottom: 0;
-    right:0;
+    right:1%;
     left:0;
     margin:10px;
     margin: 10px auto;
@@ -424,6 +428,17 @@ col2form{
     margin-right:38px;
 }
 
+.beeple{
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+}
+.outer{
+    position:relative
+}
+
 
 @media only screen and (max-width:1026px){
     .row{
@@ -459,9 +474,7 @@ col2form{
         margin:auto;
         justify-content: center;
     }
-    .button-wrap{
-        right:17%;
-    }
+    
 }
 
 @media only screen and (max-width:775px){
@@ -477,8 +490,14 @@ col2form{
     }
     .inner-display-first{
         margin:auto;
+        
     }
-    
+    .inner-display-second{
+        width:70%;
+    }
+    .string-row{
+        width:400px;
+    }
 }
 @media only screen and (max-width:700px){
     .row{

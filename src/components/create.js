@@ -4,9 +4,11 @@ import "../styles.scss";
 import Display from "./display.js";
 import { ReactComponent as Copy } from "../assets/images/copy-svgrepo-com.svg";
 import { CreateMb1, CreateMb2, CreateMb3 } from "./createMb";
+import MyVideo from "../assets/images/beeple.mp4";
 
 export default function Page() {
   const [clicked, setClicked] = useState(false);
+  const [create, setCreate] = useState(false);
 
   const clickedFooter = () => {
     navigator.clipboard.writeText(
@@ -17,92 +19,92 @@ export default function Page() {
       setClicked(false);
     }, 2000);
   };
+  const createSwitch = () => {
+    console.log("called");
+    if (create == false) {
+      setCreate(true);
+    } else {
+      setCreate(false);
+    }
+  };
 
-  return (
-    <div className="vh">
-      <header>
-        <img src={require("../assets/images/stepnbox.png")} />
-      </header>
-      <div class="row grey-blue">
-        <div>
-          <svg
-            id=""
-            preserveAspectRatio="xMidYMax meet"
-            class="svg-separator sep6"
-            viewBox="0 0 1600 200"
-            data-height="200"
-          >
-            <polygon
-              class="firstpolygon"
-              points="-4,188.586 174,76 292,124 402,60 536,108 752,8 882,66 990,32 1210,116 1380,64 1536,150 1604,115.09 1604,204 -4,204 "
-            ></polygon>
-            <polygon
-              class="thisone"
-              points="174,76 174,78 -4,198 -4,188.586 "
-            ></polygon>
-            <polygon
-              class="thisone"
-              points="292,124 302,138 402,64 402,60 "
-            ></polygon>
-            <polygon
-              class="thisone"
-              points="536,108 544,120 752,12 752,8 "
-            ></polygon>
-            <polygon
-              class="thisone"
-              points="882,66 890,78 990,36 990,32 "
-            ></polygon>
-            <polygon
-              class="thisone"
-              points="1210,116 1222,130 1380,68 1380,64 "
-            ></polygon>
-            <polygon
-              class="thisone"
-              points="1536,150 1546,164 1604,124 1604,115.09 "
-            ></polygon>
-            <polygon
-              class="thisone"
-              points="174,76 292,124 282,140 174,78 "
-            ></polygon>
-            <polygon
-              class="thisone"
-              points="402,60 536,108 528,120 402,64 "
-            ></polygon>
-            <polygon
-              class="thisone"
-              points="752,8 882,66 874,80 752,12 "
-            ></polygon>
-            <polygon
-              class="thisone"
-              points="990,32 990,36 1192,130 1210,116 "
-            ></polygon>
-            <polygon
-              class="thisone"
-              points="1380,64 1536,150 1526,168 1380,68 "
-            ></polygon>
-          </svg>
+  if (create == false) {
+    return (
+      <div className="vh">
+        <img
+          src={require("../assets/images/bottom.png")}
+          className="back-img"
+        />
+        <div className="outer">
+          <header>
+            <img src={require("../assets/images/stepnbox.png")} />
+          </header>
+          <ul className="menu">
+            <li className="item item1">Box Data</li>
+            <li className="item item2" onClick={() => createSwitch()}>
+              Create Box
+            </li>
+          </ul>
+
+          <Display />
+
+          <footer>
+            <div className="inside-footer">
+              <div className="donate" onClick={clickedFooter}>
+                Donate: (SOL) <Copy className="copyicon" />
+              </div>
+              <div className="donate2" onClick={clickedFooter}>
+                Donate: (BSC) <Copy className="copyicon" />{" "}
+                {clicked == true ? (
+                  <div className="hide-me">Copied!</div>
+                ) : (
+                  <div></div>
+                )}
+              </div>
+            </div>
+          </footer>
         </div>
       </div>
-      <Display />
+    );
+  } else if (create == true) {
+    return (
+      <div className="vh">
+        <img
+          src={require("../assets/images/bottom.png")}
+          className="back-img"
+        />
+        <div className="outer">
+          <header>
+            <img src={require("../assets/images/stepnbox.png")} />
+          </header>
+          <ul className="menu">
+            <li className="item item1" onClick={() => createSwitch()}>
+              Box Data
+            </li>
+            <li className="item item2">Create Box</li>
+          </ul>
 
-      <Create />
-      <footer>
-        <div className="inside-footer">
-          <div className="donate" onClick={clickedFooter}>
-            Donate: (SOL) <Copy className="copyicon" />
-          </div>
-          <div className="donate2" onClick={clickedFooter}>
-            Donate: (BSC) <Copy className="copyicon" />{" "}
-            {clicked == true ? (
-              <div className="hide-me">Copied!</div>
-            ) : (
-              <div></div>
-            )}
-          </div>
+          <Create />
+
+          <footer>
+            <div className="inside-footer">
+              <div className="donate" onClick={clickedFooter}>
+                Donate: (SOL) <Copy className="copyicon" />
+              </div>
+              <div className="donate2" onClick={clickedFooter}>
+                Donate: (BSC) <Copy className="copyicon" />{" "}
+                {clicked == true ? (
+                  <div className="hide-me">Copied!</div>
+                ) : (
+                  <div></div>
+                )}
+              </div>
+            </div>
+          </footer>
         </div>
-      </footer>
-    </div>
-  );
+      </div>
+    );
+  }
 }
 function Create() {
   const [mblvl, Setmblvl] = useState(1);
