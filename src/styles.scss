@@ -520,7 +520,7 @@ col2form{
 }
 .outer{
     position:relative;
-    height:93vh;
+    height:auto;
 }
 
 .fa-arrow{
@@ -606,32 +606,36 @@ col2form{
 
 
 
-@media only screen and (max-height:1024px){
-    .outer{
-        height:110vh;
-    }
-}
+// @media only screen and (max-height:1024px){
+//     .outer{
+//         height:110vh;
+//     }
+// }
 
 
-@media only screen and (max-height:860px){
-    .outer{
-        height:120vh;
-    }
-}
-@media only screen and (max-height:800px){
-    .outer{
-        height:130vh;
-    }
-}
-@media only screen and (max-height:730px){
-    .outer{
-        height:145vh;
-    }
-}
-@media only screen and (max-height:650px){
-    .outer{
-        height:170vh;
-    }
+// @media only screen and (max-height:860px){
+//     .outer{
+//         height:120vh;
+//     }
+// }
+// @media only screen and (max-height:800px){
+//     .outer{
+//         height:130vh;
+//     }
+// }
+// @media only screen and (max-height:730px){
+//     .outer{
+//         height:145vh;
+//     }
+// }
+// @media only screen and (max-height:650px){
+//     .outer{
+//         height:170vh;
+//     }
+// }
+
+.containdisplay{
+    margin-bottom:80px;
 }
 
 
@@ -668,7 +672,7 @@ col2form{
     }
 
     .col1form, .col2form{
-        width:100%;
+        width:90%;
         margin:auto;
     }
     .form-group{
@@ -689,6 +693,8 @@ col2form{
     }
     header{ align-items: center;
         }  
+
+    
     
 }
 
@@ -728,6 +734,7 @@ col2form{
 @media only screen and (max-width: 600px) {
     .form-group{
      flex-direction:column;
+     height:auto;
     }
     .form-group-col1{
      width:310px;
@@ -758,6 +765,13 @@ col2form{
     }
     .contain-display{
         padding:0px;
+    }
+    .enter{
+        padding:0px;
+    }
+    .title-section{
+        width:50vw;
+        padding-top:50px;
     }
 }
 
