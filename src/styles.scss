@@ -746,7 +746,7 @@ col2form{
         margin-top:20px;
     }
     .string-row{
-        width:350px
+        width:300px
 
     }
     .string-row::-webkit-scrollbar{
@@ -755,6 +755,9 @@ col2form{
     .string-row{
         -ms-overflow-style:none;
         scrollbar-width: none;
+    }
+    .contain-display{
+        padding:0px;
     }
 }
 
