@@ -4,7 +4,8 @@ import "../styles.scss";
 import Display from "./display.js";
 import { ReactComponent as Copy } from "../assets/images/copy-svgrepo-com.svg";
 import { CreateMb1, CreateMb2, CreateMb3 } from "./createMb";
-import MyVideo from "../assets/images/beeple.mp4";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowTurnDown } from "@fortawesome/free-solid-svg-icons";
 
 export default function Page() {
   const [clicked, setClicked] = useState(false);
@@ -35,13 +36,13 @@ export default function Page() {
         <div className="outer">
           <header>
             <img src={require("../assets/images/stepnbox.png")} />
+            <ul className="menu">
+              <li className="item item1">Box Data</li>
+              <li className="item item2" onClick={() => createSwitch()}>
+                Enter Box
+              </li>
+            </ul>
           </header>
-          <ul className="menu">
-            <li className="item item1">Box Data</li>
-            <li className="item item2" onClick={() => createSwitch()}>
-              Enter Box
-            </li>
-          </ul>
 
           <Display />
 
@@ -113,8 +114,15 @@ function Create() {
       <div class="enter">
         <section class="entersection">
           <div class="title-section">
-            <h2>Enter Mystery Box</h2>
-            <p>Enter a new mystery box to help us gather data.</p>
+            <h2>
+              Submit Your Box
+              <FontAwesomeIcon
+                icon={faArrowTurnDown}
+                className="fa-arrow"
+                size="1x"
+                color="black"
+              />
+            </h2>
           </div>
         </section>
         <div class="containing-all">
@@ -368,11 +376,8 @@ function Create() {
       <div class="enter">
         <section class="entersection">
           <div class="title-section">
-            <h2>Enter New Mystery Box Details</h2>
-            <p>
-              Enter a new mystery box you just recieved. We use community data
-              gathered here to display box level data above.
-            </p>
+            <h2>Enter Mystery Box</h2>
+            <p>Enter a new mystery box to help us gather data.</p>
           </div>
         </section>
         <div class="containing-all">
@@ -456,11 +461,8 @@ function Create() {
       <div class="enter">
         <section class="entersection">
           <div class="title-section">
-            <h2>Enter New Mystery Box Details</h2>
-            <p>
-              Enter a new mystery box you just recieved. We use community data
-              gathered here to display box level data above.
-            </p>
+            <h2>Enter Mystery Box</h2>
+            <p>Enter a new mystery box to help us gather data.</p>
           </div>
         </section>
         <div class="containing-all">
@@ -544,11 +546,8 @@ function Create() {
       <div class="enter">
         <section class="entersection">
           <div class="title-section">
-            <h2>Enter New Mystery Box Details</h2>
-            <p>
-              Enter a new mystery box you just recieved. We use community data
-              gathered here to display box level data above.
-            </p>
+            <h2>Enter Mystery Box</h2>
+            <p>Enter a new mystery box to help us gather data.</p>
           </div>
         </section>
         <div class="containing-all">
@@ -632,11 +631,8 @@ function Create() {
       <div class="enter">
         <section class="entersection">
           <div class="title-section">
-            <h2>Enter New Mystery Box Details</h2>
-            <p>
-              Enter a new mystery box you just recieved. We use community data
-              gathered here to display box level data above.
-            </p>
+            <h2>Enter Mystery Box</h2>
+            <p>Enter a new mystery box to help us gather data.</p>
           </div>
         </section>
         <div class="containing-all">
@@ -720,11 +716,8 @@ function Create() {
       <div class="enter">
         <section class="entersection">
           <div class="title-section">
-            <h2>Enter New Mystery Box Details</h2>
-            <p>
-              Enter a new mystery box you just recieved. We use community data
-              gathered here to display box level data above.
-            </p>
+            <h2>Enter Mystery Box</h2>
+            <p>Enter a new mystery box to help us gather data.</p>
           </div>
         </section>
         <div class="containing-all">
@@ -808,11 +801,8 @@ function Create() {
       <div class="enter">
         <section class="entersection">
           <div class="title-section">
-            <h2>Enter New Mystery Box Details</h2>
-            <p>
-              Enter a new mystery box you just recieved. We use community data
-              gathered here to display box level data above.
-            </p>
+            <h2>Enter Mystery Box</h2>
+            <p>Enter a new mystery box to help us gather data.</p>
           </div>
         </section>
         <div class="containing-all">
@@ -896,11 +886,8 @@ function Create() {
       <div class="enter">
         <section class="entersection">
           <div class="title-section">
-            <h2>Enter New Mystery Box Details</h2>
-            <p>
-              Enter a new mystery box you just recieved. We use community data
-              gathered here to display box level data above.
-            </p>
+            <h2>Enter Mystery Box</h2>
+            <p>Enter a new mystery box to help us gather data.</p>
           </div>
         </section>
         <div class="containing-all">

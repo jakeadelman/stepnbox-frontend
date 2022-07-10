@@ -1,5 +1,6 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&display=swap');
 
 html{
     background:url(/assets/images/back8.jpg) no-repeat center center fixed;
@@ -179,16 +180,15 @@ label{
 .display-first{
     width:100%;
     display:flex;
+    flex-direction:column;
 }
 .display-first-wrap{
     display:flex;
-    width:50%;
-    border-right:1px solid grey;
-    margin:50px 00px;
+    width:200px;
+    margin:0px auto 20px auto;
 }
 .inner-display-first{
     display: flex;
-    margin:auto 150px auto auto;
 }
 .inner-display-first p {
     padding: 12px 20px;
@@ -206,7 +206,7 @@ label{
     padding:20px;
     width: 560px;
     max-height:490px;
-    overflow:auto;
+    overflow-y:scroll;
 }
 
 .string-row::-webkit-scrollbar-track
@@ -292,15 +292,29 @@ header img{
 
     list-style-type: none;
     width: fit-content;
-    margin: auto;
     display: flex;
     padding:0px;
     cursor:pointer;
     color:#19a5ae;
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin: 60px;
 }
 .menu .item{
     font-size:20px;
     font-weight:500;
+
+    background: #71f595;
+    padding: 10px;
+    border-radius: 10px;
+    color: black;
+    box-shadow: 10px 10px black;
+}
+.menu .item:hover{
+    background:black;
+    color:white !important;
+    box-shadow:none;
 }
 // .menu .item1{
 
@@ -369,11 +383,10 @@ footer .inside-footer .donate2{
     margin: 0 auto;
 }
 .button-wrap input{
-    padding:6px 50px;
-    background: linear-gradient(to right, #287581, rgb(231, 103, 125));
-    border: 1px solid black;
+    padding:8px 50px;
+    background: #71f595;
     font-size:20px;
-    color:white;
+    color:black;
     font-weight:500;
     cursor:pointer;
 }
@@ -381,6 +394,7 @@ footer .inside-footer .donate2{
 .title-section{
     text-align:center;
     margin:0 auto;
+    position:relative;
 }
 .title-section p {
     width:700px;
@@ -448,6 +462,11 @@ col2form{
     position:relative
 }
 
+.fa-arrow{
+    position: absolute;
+    right: -15%;
+    bottom: 24%;
+}
 
 @media only screen and (max-width:1026px){
     .row{
