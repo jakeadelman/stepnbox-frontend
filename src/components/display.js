@@ -30,7 +30,9 @@ export default function Display() {
   }, [values]);
 
   const addValue = () => {
-    if (lvl < 10) {
+    if (lvl == "") {
+      setLvl(1);
+    } else if (lvl < 10) {
       setLvl(lvl + 1);
       // send()
     }
@@ -44,9 +46,15 @@ export default function Display() {
   };
 
   const updateLvl = (e) => {
+    console.log(e);
+    console.log("THIS E");
+    console.log(e == "");
+    if (e == "") {
+      setLvl("");
+    }
     if (e >= 1 && e <= 10) {
       // console.log("sending")
-      setLvl(e);
+      setLvl(parseInt(e));
       //    send()
     } else {
       return;
