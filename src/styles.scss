@@ -746,7 +746,15 @@ col2form{
         margin-top:20px;
     }
     .string-row{
-        width:270px
+        width:350px
+
+    }
+    .string-row::-webkit-scrollbar{
+        display:none;
+    }
+    .string-row{
+        -ms-overflow-style:none;
+        scrollbar-width: none;
     }
 }
 
