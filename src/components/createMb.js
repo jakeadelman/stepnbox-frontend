@@ -285,11 +285,7 @@ export function CreateMb1(props) {
         </section>
       </div>
       <div className="inside-form-group button-wrap">
-        <input
-          type="submit"
-          value="SUBMIT NEW BOX"
-          className="btn btn-primary"
-        />
+        <input type="submit" value="SUBMIT" className="btn btn-primary" />
       </div>
     </form>
   );
@@ -762,11 +758,7 @@ export function CreateMb2(props) {
           </section> */}
         </div>
         <div className="inside-form-group button-wrap">
-          <input
-            type="submit"
-            value="SUBMIT NEW BOX"
-            className="btn btn-primary"
-          />
+          <input type="submit" value="SUBMIT" className="btn btn-primary" />
         </div>
       </form>
     </div>
@@ -1411,11 +1403,7 @@ export function CreateMb3(props) {
           </section> */}
         </div>
         <div className="inside-form-group button-wrap">
-          <input
-            type="submit"
-            value="SUBMIT NEW BOX"
-            className="btn btn-primary"
-          />
+          <input type="submit" value="SUBMIT" className="btn btn-primary" />
         </div>
       </form>
     </div>

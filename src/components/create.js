@@ -35,11 +35,12 @@ export default function Page() {
         <div className="back-img" src="../assets/images/white.jpg" />
         <div className="outer">
           <header>
-            <img src={require("../assets/images/stepnbox.png")} />
+            {/* <img src={require("../assets/images/stepnbox.png")} /> */}
+            <div>STEPNBOX</div>
             <ul className="menu">
-              <li className="item item1">Box Data</li>
+              <li className="item item1">DATA</li>
               <li className="item item2" onClick={() => createSwitch()}>
-                Enter Box
+                SUBMIT
               </li>
             </ul>
           </header>
@@ -69,13 +70,14 @@ export default function Page() {
       <div className="vh">
         <div className="outer">
           <header>
-            <img src={require("../assets/images/stepnbox.png")} />
+            {/* <img src={require("../assets/images/stepnbox.png")} /> */}
+            <div>STEPNBOX</div>
           </header>
           <ul className="menu">
             <li className="item item1" onClick={() => createSwitch()}>
-              Box Data
+              DATA
             </li>
-            <li className="item item2">Enter Box</li>
+            <li className="item item2">SUBMIT</li>
           </ul>
 
           <Create />
@@ -114,15 +116,8 @@ function Create() {
       <div class="enter">
         <section class="entersection">
           <div class="title-section">
-            <h2>
-              Submit Your Box
-              <FontAwesomeIcon
-                icon={faArrowTurnDown}
-                className="fa-arrow"
-                size="1x"
-                color="black"
-              />
-            </h2>
+            <h2>Enter Mystery Box</h2>
+            <div class="divider div-transparent"></div>
           </div>
         </section>
         <div class="containing-all">
@@ -192,7 +187,7 @@ function Create() {
                   onClick={(e) => changeBoxes(e.target.id)}
                 />
               </div>
-              <p>lvl 1 box</p>
+              <p>lvl 1</p>
             </div>
           </div>
           <SubCreate mblvl={mblvl} />
@@ -206,8 +201,8 @@ function Create() {
       <div class="enter">
         <section class="entersection">
           <div class="title-section">
-            <h2>Enter Myster Box</h2>
-            <p>Enter a new mystery box to help us gather data.</p>
+            <h2>Enter Mystery Box</h2>
+            <div class="divider div-transparent"></div>
           </div>
         </section>
         <div class="containing-all">
@@ -277,7 +272,7 @@ function Create() {
                   onClick={(e) => changeBoxes(e.target.id)}
                 />
               </div>
-              <p>lvl 2 box</p>
+              <p>lvl 2</p>
             </div>
           </div>
           <SubCreate mblvl={mblvl} />
@@ -292,7 +287,7 @@ function Create() {
         <section class="entersection">
           <div class="title-section">
             <h2>Enter Mystery Box</h2>
-            <p>Enter a new mystery box to help us gather data.</p>
+            <div class="divider div-transparent"></div>
           </div>
         </section>
         <div class="containing-all">
@@ -362,7 +357,7 @@ function Create() {
                   onClick={(e) => changeBoxes(e.target.id)}
                 />
               </div>
-              <p>lvl 3 box</p>
+              <p>lvl 3</p>
             </div>
           </div>
           <SubCreate mblvl={mblvl} />
@@ -377,7 +372,7 @@ function Create() {
         <section class="entersection">
           <div class="title-section">
             <h2>Enter Mystery Box</h2>
-            <p>Enter a new mystery box to help us gather data.</p>
+            <div class="divider div-transparent"></div>
           </div>
         </section>
         <div class="containing-all">
@@ -447,7 +442,7 @@ function Create() {
                   onClick={(e) => changeBoxes(e.target.id)}
                 />
               </div>
-              <p>lvl 4 box</p>
+              <p>lvl 4</p>
             </div>
           </div>
           <SubCreate mblvl={mblvl} />
@@ -462,7 +457,7 @@ function Create() {
         <section class="entersection">
           <div class="title-section">
             <h2>Enter Mystery Box</h2>
-            <p>Enter a new mystery box to help us gather data.</p>
+            <div class="divider div-transparent"></div>
           </div>
         </section>
         <div class="containing-all">
@@ -532,7 +527,7 @@ function Create() {
                   onClick={(e) => changeBoxes(e.target.id)}
                 />
               </div>
-              <p>lvl 5 box</p>
+              <p>lvl 5</p>
             </div>
           </div>
           <SubCreate mblvl={mblvl} />
@@ -547,7 +542,7 @@ function Create() {
         <section class="entersection">
           <div class="title-section">
             <h2>Enter Mystery Box</h2>
-            <p>Enter a new mystery box to help us gather data.</p>
+            <div class="divider div-transparent"></div>
           </div>
         </section>
         <div class="containing-all">
@@ -617,7 +612,7 @@ function Create() {
                   onClick={(e) => changeBoxes(e.target.id)}
                 />
               </div>
-              <p>lvl 6 box</p>
+              <p>lvl 6</p>
             </div>
           </div>
           <SubCreate mblvl={mblvl} />
@@ -632,7 +627,7 @@ function Create() {
         <section class="entersection">
           <div class="title-section">
             <h2>Enter Mystery Box</h2>
-            <p>Enter a new mystery box to help us gather data.</p>
+            <div class="divider div-transparent"></div>
           </div>
         </section>
         <div class="containing-all">
@@ -702,7 +697,7 @@ function Create() {
                   onClick={(e) => changeBoxes(e.target.id)}
                 />
               </div>
-              <p>lvl 7 box</p>
+              <p>lvl 7</p>
             </div>
           </div>
           <SubCreate mblvl={mblvl} />
@@ -717,7 +712,7 @@ function Create() {
         <section class="entersection">
           <div class="title-section">
             <h2>Enter Mystery Box</h2>
-            <p>Enter a new mystery box to help us gather data.</p>
+            <div class="divider div-transparent"></div>
           </div>
         </section>
         <div class="containing-all">
@@ -787,7 +782,7 @@ function Create() {
                   onClick={(e) => changeBoxes(e.target.id)}
                 />
               </div>
-              <p>lvl 8 box</p>
+              <p>lvl 8</p>
             </div>
           </div>
           <SubCreate mblvl={mblvl} />
@@ -802,7 +797,7 @@ function Create() {
         <section class="entersection">
           <div class="title-section">
             <h2>Enter Mystery Box</h2>
-            <p>Enter a new mystery box to help us gather data.</p>
+            <div class="divider div-transparent"></div>
           </div>
         </section>
         <div class="containing-all">
@@ -872,7 +867,7 @@ function Create() {
                   onClick={(e) => changeBoxes(e.target.id)}
                 />
               </div>
-              <p>lvl 9 box</p>
+              <p>lvl 9</p>
             </div>
           </div>
           <SubCreate mblvl={mblvl} />
@@ -887,7 +882,7 @@ function Create() {
         <section class="entersection">
           <div class="title-section">
             <h2>Enter Mystery Box</h2>
-            <p>Enter a new mystery box to help us gather data.</p>
+            <div class="divider div-transparent"></div>
           </div>
         </section>
         <div class="containing-all">
@@ -957,7 +952,7 @@ function Create() {
                   onClick={(e) => changeBoxes(e.target.id)}
                 />
               </div>
-              <p>lvl 10 box</p>
+              <p>lvl 10</p>
             </div>
           </div>
           <SubCreate mblvl={mblvl} />
