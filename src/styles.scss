@@ -387,8 +387,8 @@ footer{
     bottom:0;
     padding:10px;
     margin-top: 20px;
-    height: 100px;
-    position:fixed;
+    height: 30px;
+    position:relative;
     width:320px;
     left:50%;
     transform:translate(-50%);
@@ -404,12 +404,15 @@ footer{
     left:0;
     margin:10px;
     margin: 10px auto;
-    width: 255px;
+    width: 272px;
 }
 footer .inside-footer .donate2{
     margin-left:40px;
 }
+footer .donate, footer .donate2{
 
+    text-transform:uppercase;
+}
 
 .button-wrap{
     position:absolute;
@@ -516,7 +519,8 @@ col2form{
     min-height: 100%;
 }
 .outer{
-    position:relative
+    position:relative;
+    height:93vh;
 }
 
 .fa-arrow{
@@ -602,7 +606,33 @@ col2form{
 
 
 
+@media only screen and (max-height:1024px){
+    .outer{
+        height:110vh;
+    }
+}
 
+
+@media only screen and (max-height:860px){
+    .outer{
+        height:120vh;
+    }
+}
+@media only screen and (max-height:800px){
+    .outer{
+        height:130vh;
+    }
+}
+@media only screen and (max-height:730px){
+    .outer{
+        height:145vh;
+    }
+}
+@media only screen and (max-height:650px){
+    .outer{
+        height:170vh;
+    }
+}
 
 
 
@@ -618,25 +648,15 @@ col2form{
         width:50%;
     }
     .display-first-wrap{
-        width:30%;
+        width:auto;
 
     margin-bottom: 70px;
     }
   
     .inner-display-first{
-        margin: auto 60px auto auto;
+        margin: auto;
     }
-    header{
-        display:flex;
-        flex-direction:column;
-    }
-    .menu{
-        position:relative;
-        margin:auto;
-       
-    }
-    header{ align-items: center;
-        }    
+   
 }
 
 @media only screen and (max-width:847px){
@@ -658,6 +678,17 @@ col2form{
         margin:auto;
         justify-content: center;
     }
+    header{
+        display:flex;
+        flex-direction:column;
+    }
+    .menu{
+        position:relative;
+        margin:auto;
+       
+    }
+    header{ align-items: center;
+        }  
     
 }
 
@@ -669,7 +700,7 @@ col2form{
         flex-direction:column;
     }
     .display-first-wrap{
-        margin:20px auto 40px auto;
+        margin:40px auto;
         border-right:none;
     }
     .inner-display-first{
@@ -677,10 +708,13 @@ col2form{
         
     }
     .inner-display-second{
-        width:70%;
+        width:90%;
     }
     .string-row{
         width:400px;
+    }
+    .display-first-wrap{
+        width:90%;
     }
 }
 @media only screen and (max-width:700px){
@@ -710,6 +744,9 @@ col2form{
  @media only screen and (max-width:450px){
     .row{
         margin-top:20px;
+    }
+    .string-row{
+        width:270px
     }
 }
 

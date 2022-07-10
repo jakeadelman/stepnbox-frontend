@@ -46,23 +46,22 @@ export default function Page() {
           </header>
 
           <Display />
-
-          <footer>
-            <div className="inside-footer">
-              <div className="donate" onClick={clickedFooter}>
-                Donate: (SOL) <Copy className="copyicon" />
-              </div>
-              <div className="donate2" onClick={clickedFooter}>
-                Donate: (BSC) <Copy className="copyicon" />{" "}
-                {clicked == true ? (
-                  <div className="hide-me">Copied!</div>
-                ) : (
-                  <div></div>
-                )}
-              </div>
-            </div>
-          </footer>
         </div>
+        <footer>
+          <div className="inside-footer">
+            <div className="donate" onClick={clickedFooter}>
+              Donate: (SOL) <Copy className="copyicon" />
+            </div>
+            <div className="donate2" onClick={clickedFooter}>
+              Donate: (BSC) <Copy className="copyicon" />{" "}
+              {clicked == true ? (
+                <div className="hide-me">Copied!</div>
+              ) : (
+                <div></div>
+              )}
+            </div>
+          </div>
+        </footer>
       </div>
     );
   } else if (create == true) {
@@ -81,23 +80,22 @@ export default function Page() {
           </ul>
 
           <Create />
-
-          <footer>
-            <div className="inside-footer">
-              <div className="donate" onClick={clickedFooter}>
-                Donate: (SOL) <Copy className="copyicon" />
-              </div>
-              <div className="donate2" onClick={clickedFooter}>
-                Donate: (BSC) <Copy className="copyicon" />{" "}
-                {clicked == true ? (
-                  <div className="hide-me">Copied!</div>
-                ) : (
-                  <div></div>
-                )}
-              </div>
-            </div>
-          </footer>
         </div>
+        <footer>
+          <div className="inside-footer">
+            <div className="donate" onClick={clickedFooter}>
+              Donate: (SOL) <Copy className="copyicon" />
+            </div>
+            <div className="donate2" onClick={clickedFooter}>
+              Donate: (BSC) <Copy className="copyicon" />{" "}
+              {clicked == true ? (
+                <div className="hide-me">Copied!</div>
+              ) : (
+                <div></div>
+              )}
+            </div>
+          </div>
+        </footer>
       </div>
     );
   }
