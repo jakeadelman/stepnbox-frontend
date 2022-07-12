@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
+import Cookies from "universal-cookie";
 
 export function CreateMb1(props) {
   const [gem1luck, setGem1luck] = useState(0);
@@ -10,103 +11,119 @@ export function CreateMb1(props) {
   const [commonScroll, setCommonScroll] = useState(0);
   const [uncommonScroll, setUncommonScroll] = useState(0);
   const navigate = useNavigate();
+  const [showMe, setShowMe] = useState(0);
+  const [showMe2, setShowMe2] = useState(0);
+  const cookies = new Cookies();
 
   // these methods will update state properties
-  function updateForm(value) {
-    if (value.gst && value.gst >= 0 && value.gst <= 10) {
-      setGst(value.gst);
-    } else if (value.gst) {
-      return;
+  function updateForm(e) {
+    console.log(typeof e.target.value);
+    console.log(gem1luck);
+
+    if (e.target.id === "1" && e.target.value >= 0 && e.target.value <= 10) {
+      setGem1luck(e.target.value);
+    } else if (e.target.id === "1" && e.target.value == "") {
+      setGem1luck("");
     }
 
-    if (value.gem1luck && value.gem1luck >= 0 && value.gem1luck <= 10) {
-      setGem1luck(value.gem1luck);
-    } else if (value.gem1luck) {
-      return;
+    if (e.target.id === "2" && e.target.value >= 0 && e.target.value <= 10) {
+      setGst(e.target.value);
+    } else if (e.target.id === "2" && e.target.value == "") {
+      setGst("");
     }
 
-    if (
-      value.gem1efficiency &&
-      value.gem1efficiency >= 0 &&
-      value.gem1efficiency <= 10
-    ) {
-      setGem1efficiency(value.gem1efficiency);
-    } else if (value.gem1efficiency) {
-      return;
+    if (e.target.id === "3" && e.target.value >= 0 && e.target.value <= 10) {
+      setGem1efficiency(e.target.value);
+    } else if (e.target.id === "3" && e.target.value == "") {
+      setGem1efficiency("");
     }
 
-    if (
-      value.gem1resillience &&
-      value.gem1resillience >= 0 &&
-      value.gem1resillience <= 10
-    ) {
-      setGem1resillience(value.gem1resillience);
-    } else if (value.gem1resillience) {
-      return;
+    if (e.target.id === "4" && e.target.value >= 0 && e.target.value <= 10) {
+      setGem1resillience(e.target.value);
+    } else if (e.target.id === "4" && e.target.value == "") {
+      setGem1resillience("");
     }
 
-    if (
-      value.gem1comfort &&
-      value.gem1comfort >= 0 &&
-      value.gem1comfort <= 10
-    ) {
-      setGem1comfort(value.gem1comfort);
-    } else if (value.gem1comfort) {
-      return;
+    if (e.target.id === "5" && e.target.value >= 0 && e.target.value <= 10) {
+      setGem1comfort(e.target.value);
+    } else if (e.target.id === "5" && e.target.value == "") {
+      setGem1comfort("");
     }
-    if (
-      value.commonScroll &&
-      value.commonScroll >= 0 &&
-      value.commonScroll <= 10
-    ) {
-      setCommonScroll(value.commonScroll);
-    } else if (value.commonScroll) {
-      return;
+
+    if (e.target.id === "6" && e.target.value >= 0 && e.target.value <= 10) {
+      setCommonScroll(e.target.value);
+    } else if (e.target.id === "6" && e.target.value == "") {
+      setCommonScroll("");
     }
-    if (
-      value.uncommonScroll &&
-      value.uncommonScroll >= 0 &&
-      value.uncommonScroll <= 10
-    ) {
-      setUncommonScroll(value.uncommonScroll);
-    } else if (value.uncommonScroll) {
-      return;
+
+    if (e.target.id === "7" && e.target.value >= 0 && e.target.value <= 10) {
+      setUncommonScroll(e.target.value);
+    } else if (e.target.id === "7" && e.target.value == "") {
+      setUncommonScroll("");
     }
   }
 
   async function onSubmit(e) {
     e.preventDefault();
+    let now = new Date();
+    let before = new Date(cookies.get("last"));
+    let last = Math.abs(before - now);
+    console.log(last);
+    console.log(cookies.get("last"));
 
-    const newBox = {
-      gem1luck: gem1luck,
-      gem1efficiency: gem1efficiency,
-      gem1resillience: gem1resillience,
-      gem1comfort: gem1comfort,
-      gst: gst,
-      mblvl: props.mblvl,
-      commonScroll: commonScroll,
-      uncommonScroll: uncommonScroll,
-    };
-    console.log(newBox);
+    if (last < 3600000) {
+      console.log("showme");
+      setShowMe(true);
+      setTimeout(() => {
+        setShowMe(false);
+      }, 3000);
+    } else if (
+      gem1luck == 0 &&
+      gem1efficiency == 0 &&
+      gem1resillience == 0 &&
+      gem1comfort == 0 &&
+      gst == 0 &&
+      commonScroll == 0 &&
+      uncommonScroll == 0
+    ) {
+      setShowMe2(true);
+      setTimeout(() => {
+        setShowMe2(false);
+      }, 3000);
+    } else {
+      cookies.set("last", new Date());
 
-    console.log(process.env.REACT_APP_API_ENDPOINT);
-    await fetch(process.env.REACT_APP_API_ENDPOINT + "/record/add", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newBox),
-    });
+      const newBox = {
+        gem1luck: gem1luck,
+        gem1efficiency: gem1efficiency,
+        gem1resillience: gem1resillience,
+        gem1comfort: gem1comfort,
+        gst: gst,
+        mblvl: props.mblvl,
+        commonScroll: commonScroll,
+        uncommonScroll: uncommonScroll,
+      };
+      console.log(newBox);
 
-    // setForm({ gem1luck: 0,gst:0 });
-    setGem1comfort(0);
-    setGem1efficiency(0);
-    setGem1luck(0);
-    setGem1resillience(0);
-    setGst(0);
-    setCommonScroll(0);
-    setUncommonScroll(0);
-    navigate("/");
+      console.log(process.env.REACT_APP_API_ENDPOINT);
+      await fetch(process.env.REACT_APP_API_ENDPOINT + "/record/add", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newBox),
+      });
+
+      // setForm({ gem1luck: 0,gst:0 });
+      setGem1comfort(0);
+      setGem1efficiency(0);
+      setGem1luck(0);
+      setGem1resillience(0);
+      setGst(0);
+      setCommonScroll(0);
+      setUncommonScroll(0);
+      navigate("/");
+    }
   }
 
   function subtractValue(value) {
@@ -284,8 +301,19 @@ export function CreateMb1(props) {
           />
         </section>
       </div>
+
       <div className="inside-form-group button-wrap">
         <input type="submit" value="SUBMIT" className="btn btn-primary" />
+        {showMe == true ? (
+          <div className="showme">You can only submit one box per hour.</div>
+        ) : (
+          <div></div>
+        )}
+        {showMe2 == true ? (
+          <div className="showme showme2">You cannot submit an empty box.</div>
+        ) : (
+          <div></div>
+        )}
       </div>
     </form>
   );
@@ -304,163 +332,163 @@ export function CreateMb2(props) {
   const [uncommonScroll, setUncommonScroll] = useState(0);
   const [rareScroll, setRareScroll] = useState(0);
   const [gst, setGst] = useState(0);
+  const [showMe, setShowMe] = useState(0);
+  const [showMe2, setShowMe2] = useState(0);
   const navigate = useNavigate();
+  const cookies = new Cookies();
 
   // these methods will update state properties
-  function updateForm(value) {
-    console.log(value);
-    console.log("value");
-    console.log(value.gem1luck);
-    // console.log("luck")
-
-    if (value.gst && value.gst >= 0 && value.gst <= 10) {
-      setGst(value.gst);
-    } else if (value.gst) {
-      return;
+  function updateForm(e) {
+    if (e.target.id === "1" && e.target.value >= 0 && e.target.value <= 10) {
+      setGem1luck(e.target.value);
+    } else if (e.target.id === "1" && e.target.value == "") {
+      setGem1luck("");
     }
 
-    if (value.gem1luck && value.gem1luck >= 0 && value.gem1luck <= 10) {
-      setGem1luck(value.gem1luck);
-    } else if (value.gem1luck) {
-      return;
+    if (e.target.id === "2" && e.target.value >= 0 && e.target.value <= 10) {
+      setGst(e.target.value);
+    } else if (e.target.id === "2" && e.target.value == "") {
+      setGst("");
     }
 
-    if (
-      value.gem1efficiency &&
-      value.gem1efficiency >= 0 &&
-      value.gem1efficiency <= 10
-    ) {
-      setGem1efficiency(value.gem1efficiency);
-    } else if (value.gem1efficiency) {
-      return;
+    if (e.target.id === "3" && e.target.value >= 0 && e.target.value <= 10) {
+      setGem1efficiency(e.target.value);
+    } else if (e.target.id === "3" && e.target.value == "") {
+      setGem1efficiency("");
     }
 
-    if (
-      value.gem1resillience &&
-      value.gem1resillience >= 0 &&
-      value.gem1resillience <= 10
-    ) {
-      setGem1resillience(value.gem1resillience);
-    } else if (value.gem1resillience) {
-      return;
+    if (e.target.id === "4" && e.target.value >= 0 && e.target.value <= 10) {
+      setGem1resillience(e.target.value);
+    } else if (e.target.id === "4" && e.target.value == "") {
+      setGem1resillience("");
     }
 
-    if (
-      value.gem1comfort &&
-      value.gem1comfort >= 0 &&
-      value.gem1comfort <= 10
-    ) {
-      setGem1comfort(value.gem1comfort);
-    } else if (value.gem1comfort) {
-      return;
+    if (e.target.id === "5" && e.target.value >= 0 && e.target.value <= 10) {
+      setGem1comfort(e.target.value);
+    } else if (e.target.id === "5" && e.target.value == "") {
+      setGem1comfort("");
     }
 
-    if (
-      value.gem2efficiency &&
-      value.gem2efficiency >= 0 &&
-      value.gem2efficiency <= 10
-    ) {
-      setGem2efficiency(value.gem2efficiency);
-    } else if (value.gem2efficiency) {
-      return;
+    if (e.target.id === "10" && e.target.value >= 0 && e.target.value <= 10) {
+      setCommonScroll(e.target.value);
+    } else if (e.target.id === "10" && e.target.value == "") {
+      setCommonScroll("");
     }
 
-    if (
-      value.gem2resillience &&
-      value.gem2resillience >= 0 &&
-      value.gem2resillience <= 10
-    ) {
-      setGem2resillience(value.gem2resillience);
-    } else if (value.gem2resillience) {
-      return;
+    if (e.target.id === "11" && e.target.value >= 0 && e.target.value <= 10) {
+      setUncommonScroll(e.target.value);
+    } else if (e.target.id === "11" && e.target.value == "") {
+      setUncommonScroll("");
     }
 
-    if (
-      value.gem2comfort &&
-      value.gem2comfort >= 0 &&
-      value.gem2comfort <= 10
-    ) {
-      setGem2comfort(value.gem2comfort);
-    } else if (value.gem2comfort) {
-      return;
+    if (e.target.id === "6" && e.target.value >= 0 && e.target.value <= 10) {
+      setGem2luck(e.target.value);
+    } else if (e.target.id === "6" && e.target.value == "") {
+      setGem2luck("");
     }
 
-    if (value.gem2luck && value.gem2luck >= 0 && value.gem2luck <= 10) {
-      setGem2luck(value.gem2luck);
-    } else if (value.gem2luck) {
-      return;
+    if (e.target.id === "7" && e.target.value >= 0 && e.target.value <= 10) {
+      setGem2efficiency(e.target.value);
+    } else if (e.target.id === "7" && e.target.value == "") {
+      setGem2efficiency("");
     }
 
-    if (
-      value.commonScroll &&
-      value.commonScroll >= 0 &&
-      value.commonScroll <= 10
-    ) {
-      setCommonScroll(value.commmonScroll);
-    } else if (value.commonScroll) {
-      return;
+    if (e.target.id === "8" && e.target.value >= 0 && e.target.value <= 10) {
+      setGem2resillience(e.target.value);
+    } else if (e.target.id === "8" && e.target.value == "") {
+      setGem2resillience("");
     }
 
-    if (
-      value.uncommonScroll &&
-      value.uncommonScroll >= 0 &&
-      value.uncommonScroll <= 10
-    ) {
-      setGem2luck(value.uncommonScroll);
-    } else if (value.uncommonScroll) {
-      return;
+    if (e.target.id === "9" && e.target.value >= 0 && e.target.value <= 10) {
+      setGem2comfort(e.target.value);
+    } else if (e.target.id === "9" && e.target.value == "") {
+      setGem2comfort("");
     }
-    if (value.rareScroll && value.rareScroll >= 0 && value.rareScroll <= 10) {
-      setRareScroll(value.rareScroll);
-    } else if (value.rareScroll) {
-      return;
+
+    if (e.target.id === "12" && e.target.value >= 0 && e.target.value <= 10) {
+      setRareScroll(e.target.value);
+    } else if (e.target.id === "12" && e.target.value == "") {
+      setRareScroll("");
     }
   }
 
   async function onSubmit(e) {
     e.preventDefault();
+    let now = new Date();
+    let before = new Date(cookies.get("last"));
+    let last = Math.abs(before - now);
+    console.log(last);
+    console.log(cookies.get("last"));
 
-    const newBox = {
-      gem1luck: gem1luck,
-      gem1efficiency: gem1efficiency,
-      gem1resillience: gem1resillience,
-      gem1comfort: gem1comfort,
-      gst: gst,
-      gem2efficiency: gem2efficiency,
-      gem2luck: gem2luck,
-      gem2resillience: gem2resillience,
-      gem2comfort: gem2comfort,
-      mblvl: props.mblvl,
-      commonScroll: commonScroll,
-      uncommonScroll: uncommonScroll,
-      rareScroll: rareScroll,
-    };
-    console.log(newBox);
+    if (last < 3600000) {
+      console.log("showme");
+      setShowMe(true);
+      setTimeout(() => {
+        setShowMe(false);
+      }, 3000);
+    } else if (
+      gem1luck == 0 &&
+      gem1efficiency == 0 &&
+      gem1resillience == 0 &&
+      gem1comfort == 0 &&
+      gst == 0 &&
+      commonScroll == 0 &&
+      uncommonScroll == 0 &&
+      gem2efficiency == 0 &&
+      gem2luck == 0 &&
+      gem2resillience == 0 &&
+      gem2comfort == 0 &&
+      rareScroll == 0
+    ) {
+      setShowMe2(true);
+      setTimeout(() => {
+        setShowMe2(false);
+      }, 3000);
+    } else {
+      cookies.set("last", new Date());
 
-    console.log(process.env.REACT_APP_API_ENDPOINT);
-    await fetch(process.env.REACT_APP_API_ENDPOINT + "/record/add", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newBox),
-    });
+      const newBox = {
+        gem1luck: gem1luck,
+        gem1efficiency: gem1efficiency,
+        gem1resillience: gem1resillience,
+        gem1comfort: gem1comfort,
+        gst: gst,
+        gem2efficiency: gem2efficiency,
+        gem2luck: gem2luck,
+        gem2resillience: gem2resillience,
+        gem2comfort: gem2comfort,
+        mblvl: props.mblvl,
+        commonScroll: commonScroll,
+        uncommonScroll: uncommonScroll,
+        rareScroll: rareScroll,
+      };
+      console.log(newBox);
 
-    // setForm({ gem1luck: 0,gst:0 });
-    setGem1comfort(0);
-    setGem1efficiency(0);
-    setGem1luck(0);
-    setGem1resillience(0);
-    setGst(0);
+      console.log(process.env.REACT_APP_API_ENDPOINT);
+      await fetch(process.env.REACT_APP_API_ENDPOINT + "/record/add", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newBox),
+      });
 
-    setGem2efficiency(0);
-    setGem2luck(0);
-    setGem2resillience(0);
-    setGem2comfort(0);
-    setCommonScroll(0);
-    setUncommonScroll(0);
-    setRareScroll(0);
-    navigate("/");
+      // setForm({ gem1luck: 0,gst:0 });
+      setGem1comfort(0);
+      setGem1efficiency(0);
+      setGem1luck(0);
+      setGem1resillience(0);
+      setGst(0);
+
+      setGem2efficiency(0);
+      setGem2luck(0);
+      setGem2resillience(0);
+      setGem2comfort(0);
+      setCommonScroll(0);
+      setUncommonScroll(0);
+      setRareScroll(0);
+      navigate("/");
+    }
   }
 
   function subtractValue(value) {
@@ -557,6 +585,7 @@ export function CreateMb2(props) {
       if (newGem1Luck > 10) {
         newGem1Luck = 10;
       }
+      setGem1luck(newGem1Luck);
     }
     if (value == "2") {
       let newGst = gst + 1;
@@ -752,13 +781,21 @@ export function CreateMb2(props) {
               subtractValue={subtractValue}
             />
           </section>
-
-          {/* <section class="form-group-col form-group-col3">
-            
-          </section> */}
         </div>
         <div className="inside-form-group button-wrap">
           <input type="submit" value="SUBMIT" className="btn btn-primary" />
+          {showMe == true ? (
+            <div className="showme">You can only submit one box per hour.</div>
+          ) : (
+            <div></div>
+          )}
+          {showMe2 == true ? (
+            <div className="showme showme2">
+              You cannot submit an empty box.
+            </div>
+          ) : (
+            <div></div>
+          )}
         </div>
       </form>
     </div>
@@ -784,211 +821,207 @@ export function CreateMb3(props) {
   const [rareScroll, setRareScroll] = useState(0);
   const [epicScroll, setEpicScroll] = useState(0);
   const navigate = useNavigate();
+  const [showMe, setShowMe] = useState(0);
+  const [showMe2, setShowMe2] = useState(0);
+  const cookies = new Cookies();
 
   // these methods will update state properties
-  function updateForm(value) {
-    console.log(value);
-    console.log("value");
-    console.log(value.gem1luck);
-    // console.log("luck")
-
-    if (value.gst && value.gst >= 0 && value.gst <= 10) {
-      setGst(value.gst);
-    } else if (value.gst) {
-      return;
+  function updateForm(e) {
+    if (e.target.id === "1" && e.target.value >= 0 && e.target.value <= 10) {
+      setGem1luck(e.target.value);
+    } else if (e.target.id === "1" && e.target.value == "") {
+      setGem1luck("");
     }
 
-    if (value.gem1luck && value.gem1luck >= 0 && value.gem1luck <= 10) {
-      setGem1luck(value.gem1luck);
-    } else if (value.gem1luck) {
-      return;
+    if (e.target.id === "2" && e.target.value >= 0 && e.target.value <= 10) {
+      setGst(e.target.value);
+    } else if (e.target.id === "2" && e.target.value == "") {
+      setGst("");
     }
 
-    if (
-      value.gem1efficiency &&
-      value.gem1efficiency >= 0 &&
-      value.gem1efficiency <= 10
-    ) {
-      setGem1efficiency(value.gem1efficiency);
-    } else if (value.gem1efficiency) {
-      return;
+    if (e.target.id === "3" && e.target.value >= 0 && e.target.value <= 10) {
+      setGem1efficiency(e.target.value);
+    } else if (e.target.id === "3" && e.target.value == "") {
+      setGem1efficiency("");
     }
 
-    if (
-      value.gem1resillience &&
-      value.gem1resillience >= 0 &&
-      value.gem1resillience <= 10
-    ) {
-      setGem1resillience(value.gem1resillience);
-    } else if (value.gem1resillience) {
-      return;
+    if (e.target.id === "4" && e.target.value >= 0 && e.target.value <= 10) {
+      setGem1resillience(e.target.value);
+    } else if (e.target.id === "4" && e.target.value == "") {
+      setGem1resillience("");
     }
 
-    if (
-      value.gem1comfort &&
-      value.gem1comfort >= 0 &&
-      value.gem1comfort <= 10
-    ) {
-      setGem1comfort(value.gem1comfort);
-    } else if (value.gem1comfort) {
-      return;
+    if (e.target.id === "5" && e.target.value >= 0 && e.target.value <= 10) {
+      setGem1comfort(e.target.value);
+    } else if (e.target.id === "5" && e.target.value == "") {
+      setGem1comfort("");
     }
 
-    if (
-      value.gem2efficiency &&
-      value.gem2efficiency >= 0 &&
-      value.gem2efficiency <= 10
-    ) {
-      setGem2efficiency(value.gem2efficiency);
-    } else if (value.gem2efficiency) {
-      return;
+    if (e.target.id === "10" && e.target.value >= 0 && e.target.value <= 10) {
+      setCommonScroll(e.target.value);
+    } else if (e.target.id === "10" && e.target.value == "") {
+      setCommonScroll("");
     }
 
-    if (
-      value.gem2resillience &&
-      value.gem2resillience >= 0 &&
-      value.gem2resillience <= 10
-    ) {
-      setGem2resillience(value.gem2resillience);
-    } else if (value.gem2resillience) {
-      return;
+    if (e.target.id === "11" && e.target.value >= 0 && e.target.value <= 10) {
+      setUncommonScroll(e.target.value);
+    } else if (e.target.id === "11" && e.target.value == "") {
+      setUncommonScroll("");
     }
 
-    if (
-      value.gem2comfort &&
-      value.gem2comfort >= 0 &&
-      value.gem2comfort <= 10
-    ) {
-      setGem2comfort(value.gem2comfort);
-    } else if (value.gem2comfort) {
-      return;
+    if (e.target.id === "6" && e.target.value >= 0 && e.target.value <= 10) {
+      setGem2luck(e.target.value);
+    } else if (e.target.id === "6" && e.target.value == "") {
+      setGem2luck("");
     }
 
-    if (value.gem2luck && value.gem2luck >= 0 && value.gem2luck <= 10) {
-      setGem2luck(value.gem2luck);
-    } else if (value.gem2luck) {
-      return;
+    if (e.target.id === "7" && e.target.value >= 0 && e.target.value <= 10) {
+      setGem2efficiency(e.target.value);
+    } else if (e.target.id === "7" && e.target.value == "") {
+      setGem2efficiency("");
     }
 
-    if (
-      value.commonScrioll &&
-      value.commonScroll >= 0 &&
-      value.commonScroll <= 10
-    ) {
-      setCommonScroll(value.commmonScroll);
-    } else if (value.commonScroll) {
-      return;
+    if (e.target.id === "8" && e.target.value >= 0 && e.target.value <= 10) {
+      setGem2resillience(e.target.value);
+    } else if (e.target.id === "8" && e.target.value == "") {
+      setGem2resillience("");
     }
 
-    if (
-      value.uncommonScroll &&
-      value.uncommonScroll >= 0 &&
-      value.uncommonScroll <= 10
-    ) {
-      setGem2luck(value.uncommonScroll);
-    } else if (value.uncommonScroll) {
-      return;
+    if (e.target.id === "9" && e.target.value >= 0 && e.target.value <= 10) {
+      setGem2comfort(e.target.value);
+    } else if (e.target.id === "9" && e.target.value == "") {
+      setGem2comfort("");
     }
 
-    if (
-      value.gem3efficiency &&
-      value.gem3efficiency >= 0 &&
-      value.gem3efficiency <= 10
-    ) {
-      setGem3efficiency(value.gem3efficiency);
-    } else if (value.gem3efficiency) {
-      return;
+    if (e.target.id === "12" && e.target.value >= 0 && e.target.value <= 10) {
+      setGem3efficiency(e.target.value);
+    } else if (e.target.id === "12" && e.target.value == "") {
+      setGem3efficiency("");
     }
-    if (value.gem3luck && value.gem3luck >= 0 && value.gem3luck <= 10) {
-      setGem3luck(value.gem3luck);
-    } else if (value.gem3luck) {
-      return;
+
+    if (e.target.id === "13" && e.target.value >= 0 && e.target.value <= 10) {
+      setGem3luck(e.target.value);
+    } else if (e.target.id === "13" && e.target.value == "") {
+      setGem3luck("");
     }
-    if (
-      value.gem3resillience &&
-      value.gem3resillience >= 0 &&
-      value.gem3resillience <= 10
-    ) {
-      setGem3resillience(value.gem3resillience);
-    } else if (value.gem3resillience) {
-      return;
+
+    if (e.target.id === "14" && e.target.value >= 0 && e.target.value <= 10) {
+      setGem3resillience(e.target.value);
+    } else if (e.target.id === "14" && e.target.value == "") {
+      setGem3resillience("");
     }
-    if (
-      value.gem3comfort &&
-      value.gem3comfort >= 0 &&
-      value.gem3comfort <= 10
-    ) {
-      setGem3comfort(value.gem3comfort);
-    } else if (value.gem3comfort) {
-      return;
+
+    if (e.target.id === "15" && e.target.value >= 0 && e.target.value <= 10) {
+      setGem3comfort(e.target.value);
+    } else if (e.target.id === "15" && e.target.value == "") {
+      setGem3comfort("");
     }
-    if (value.rareScroll && value.rareScroll >= 0 && value.rareScroll <= 10) {
-      setRareScroll(value.rareScroll);
-    } else if (value.rareScroll) {
-      return;
+
+    if (e.target.id === "16" && e.target.value >= 0 && e.target.value <= 10) {
+      setRareScroll(e.target.value);
+    } else if (e.target.id === "16" && e.target.value == "") {
+      setRareScroll("");
     }
-    if (value.epicScroll && value.epicScroll >= 0 && value.epicScroll <= 10) {
-      setEpicScroll(value.epicScroll);
-    } else if (value.epicScroll) {
-      return;
+    if (e.target.id === "17" && e.target.value >= 0 && e.target.value <= 10) {
+      setEpicScroll(e.target.value);
+    } else if (e.target.id === "17" && e.target.value == "") {
+      setEpicScroll("");
     }
   }
 
   async function onSubmit(e) {
     e.preventDefault();
+    let now = new Date();
+    let before = new Date(cookies.get("last"));
+    let last = Math.abs(before - now);
+    console.log(last);
+    console.log(cookies.get("last"));
 
-    const newBox = {
-      gem1luck: gem1luck,
-      gem1efficiency: gem1efficiency,
-      gem1resillience: gem1resillience,
-      gem1comfort: gem1comfort,
-      gst: gst,
-      gem2efficiency: gem2efficiency,
-      gem2luck: gem2luck,
-      gem2resillience: gem2resillience,
-      gem2comfort: gem2comfort,
-      mblvl: props.mblvl,
-      commonScroll: commonScroll,
-      uncommonScroll: uncommonScroll,
-      gem3efficiency: gem3efficiency,
-      gem3luck: gem3luck,
-      gem3resillience: gem3resillience,
-      gem3comfort: gem3comfort,
-      rareScroll: rareScroll,
-      epicScroll: epicScroll,
-    };
-    console.log(newBox);
+    if (last < 3600000) {
+      console.log("showme");
+      setShowMe(true);
+      setTimeout(() => {
+        setShowMe(false);
+      }, 3000);
+    } else if (
+      gem1luck == 0 &&
+      gem1efficiency == 0 &&
+      gem1resillience == 0 &&
+      gem1comfort == 0 &&
+      gst == 0 &&
+      commonScroll == 0 &&
+      uncommonScroll == 0 &&
+      gem2efficiency == 0 &&
+      gem2luck == 0 &&
+      gem2resillience == 0 &&
+      gem2comfort == 0 &&
+      rareScroll == 0 &&
+      gem3efficiency == 0 &&
+      gem3luck == 0 &&
+      gem3resillience == 0 &&
+      gem3comfort == 0 &&
+      epicScroll == 0
+    ) {
+      setShowMe2(true);
+      setTimeout(() => {
+        setShowMe2(false);
+      }, 3000);
+    } else {
+      cookies.set("last", new Date());
 
-    console.log(process.env.REACT_APP_API_ENDPOINT);
-    await fetch(process.env.REACT_APP_API_ENDPOINT + "/record/add", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newBox),
-    });
+      const newBox = {
+        gem1luck: gem1luck,
+        gem1efficiency: gem1efficiency,
+        gem1resillience: gem1resillience,
+        gem1comfort: gem1comfort,
+        gst: gst,
+        gem2efficiency: gem2efficiency,
+        gem2luck: gem2luck,
+        gem2resillience: gem2resillience,
+        gem2comfort: gem2comfort,
+        mblvl: props.mblvl,
+        commonScroll: commonScroll,
+        uncommonScroll: uncommonScroll,
+        gem3efficiency: gem3efficiency,
+        gem3luck: gem3luck,
+        gem3resillience: gem3resillience,
+        gem3comfort: gem3comfort,
+        rareScroll: rareScroll,
+        epicScroll: epicScroll,
+      };
+      console.log(newBox);
 
-    // setForm({ gem1luck: 0,gst:0 });
-    setGem1comfort(0);
-    setGem1efficiency(0);
-    setGem1luck(0);
-    setGem1resillience(0);
-    setGst(0);
+      console.log(process.env.REACT_APP_API_ENDPOINT);
+      await fetch(process.env.REACT_APP_API_ENDPOINT + "/record/add", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newBox),
+      });
 
-    setGem2efficiency(0);
-    setGem2luck(0);
-    setGem2resillience(0);
-    setGem2comfort(0);
-    setCommonScroll(0);
-    setUncommonScroll(0);
+      // setForm({ gem1luck: 0,gst:0 });
+      setGem1comfort(0);
+      setGem1efficiency(0);
+      setGem1luck(0);
+      setGem1resillience(0);
+      setGst(0);
 
-    setGem3efficiency(0);
-    setGem3luck(0);
-    setGem3resillience(0);
-    setGem3comfort(0);
-    setRareScroll(0);
-    setEpicScroll(0);
-    navigate("/");
+      setGem2efficiency(0);
+      setGem2luck(0);
+      setGem2resillience(0);
+      setGem2comfort(0);
+      setCommonScroll(0);
+      setUncommonScroll(0);
+
+      setGem3efficiency(0);
+      setGem3luck(0);
+      setGem3resillience(0);
+      setGem3comfort(0);
+      setRareScroll(0);
+      setEpicScroll(0);
+      navigate("/");
+    }
   }
 
   function subtractValue(value) {
@@ -1404,6 +1437,18 @@ export function CreateMb3(props) {
         </div>
         <div className="inside-form-group button-wrap">
           <input type="submit" value="SUBMIT" className="btn btn-primary" />
+          {showMe == true ? (
+            <div className="showme">You can only submit one box per hour.</div>
+          ) : (
+            <div></div>
+          )}
+          {showMe2 == true ? (
+            <div className="showme showme2">
+              You cannot submit an empty box.
+            </div>
+          ) : (
+            <div></div>
+          )}
         </div>
       </form>
     </div>
@@ -1427,9 +1472,10 @@ const Ticker = ({
           min="0"
           max="10"
           className="slider"
-          id="slider"
+          onKeyDown={(evt) => evt.key === "e" && evt.preventDefault()}
+          id={id}
           value={value}
-          onChange={(e) => updateForm({ value: e.target.value })}
+          onChange={(e) => updateForm(e)}
         />
         <i
           class="arrow down"

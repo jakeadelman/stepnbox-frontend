@@ -5,10 +5,11 @@ import Display from "./display.js";
 import { ReactComponent as Copy } from "../assets/images/copy-svgrepo-com.svg";
 import { CreateMb1, CreateMb2, CreateMb3 } from "./createMb";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowTurnDown } from "@fortawesome/free-solid-svg-icons";
+import { faArrowTurnDown, faCopy } from "@fortawesome/free-solid-svg-icons";
 
 export default function Page() {
   const [clicked, setClicked] = useState(false);
+  const [clicked2, setClicked2] = useState(false);
   const [create, setCreate] = useState(false);
 
   const clickedFooter = () => {
@@ -20,6 +21,15 @@ export default function Page() {
       setClicked(false);
     }, 2000);
   };
+
+  const clickedFooter2 = () => {
+    navigator.clipboard.writeText("0x19a81cbc1390ea24de7a53d34c8b054287ab532b");
+    setClicked2(true);
+    setTimeout(function () {
+      setClicked2(false);
+    }, 2000);
+  };
+
   const createSwitch = () => {
     console.log("called");
     if (create == false) {
@@ -50,12 +60,19 @@ export default function Page() {
         <footer>
           <div className="inside-footer">
             <div className="donate" onClick={clickedFooter}>
-              Donate: (SOL) <Copy className="copyicon" />
-            </div>
-            <div className="donate2" onClick={clickedFooter}>
-              Donate: (BSC) <Copy className="copyicon" />{" "}
+              Donate: (SOL){" "}
+              <FontAwesomeIcon className="copyicon" icon={faCopy} />
               {clicked == true ? (
                 <div className="hide-me">Copied!</div>
+              ) : (
+                <div></div>
+              )}
+            </div>
+            <div className="donate2" onClick={clickedFooter2}>
+              Donate: (BSC)
+              <FontAwesomeIcon className="copyicon" icon={faCopy} />{" "}
+              {clicked2 == true ? (
+                <div className="hide-me2">Copied!</div>
               ) : (
                 <div></div>
               )}
@@ -84,12 +101,19 @@ export default function Page() {
         <footer>
           <div className="inside-footer">
             <div className="donate" onClick={clickedFooter}>
-              Donate: (SOL) <Copy className="copyicon" />
-            </div>
-            <div className="donate2" onClick={clickedFooter}>
-              Donate: (BSC) <Copy className="copyicon" />{" "}
+              Donate: (SOL){" "}
+              <FontAwesomeIcon className="copyicon" icon={faCopy} />
               {clicked == true ? (
                 <div className="hide-me">Copied!</div>
+              ) : (
+                <div></div>
+              )}
+            </div>
+            <div className="donate2" onClick={clickedFooter2}>
+              Donate: (BSC)
+              <FontAwesomeIcon className="copyicon" icon={faCopy} />{" "}
+              {clicked2 == true ? (
+                <div className="hide-me2">Copied!</div>
               ) : (
                 <div></div>
               )}

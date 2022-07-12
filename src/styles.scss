@@ -7,7 +7,9 @@
 
 html{
     color:black;
-}
+    // background:url("./assets/images/triangle3.jpg");
+    // background-size:cover;
+}   
 
 
 *{
@@ -381,6 +383,7 @@ header div{
 .vh{
     height:100vh;
     overflow:auto;
+    background:rgb(255,255,255,0.6);
 }
 
 footer{
@@ -400,17 +403,16 @@ footer{
     display:flex;
     position: absolute;
     bottom: 0;
-    right:1%;
+    right:-4%;
     left:0;
-    margin:10px;
     margin: 10px auto;
-    width: 272px;
+    width: 290px;
 }
 footer .inside-footer .donate2{
     margin-left:40px;
 }
 footer .donate, footer .donate2{
-
+    font-size:19px;
     text-transform:uppercase;
 }
 
@@ -458,7 +460,7 @@ footer .donate, footer .donate2{
     font-size: 28px;
 }
 //hello
-.donate{
+.donate, .donate2{
     cursor:pointer;
 }
 
@@ -471,10 +473,16 @@ footer .donate, footer .donate2{
 .hide-me{
     font-size: 13px;
     position: absolute;
-    top: -110%;
-    right: -10%;
+    top: -105%;
+    right: 45%;
 }
 
+.hide-me2{
+    font-size: 13px;
+    position: absolute;
+    top: -105%;
+    right: -5%;
+}
 .small-boxes{
     display:flex;
     flex-direction:column;
@@ -520,7 +528,7 @@ col2form{
 }
 .outer{
     position:relative;
-    height:auto;
+    min-height:calc(100vh - 70px);
 }
 
 .fa-arrow{
@@ -604,6 +612,16 @@ col2form{
 					0 0 0 4px white;
 }
 
+.showme{
+    position: absolute;
+    bottom: -30%;
+    margin: auto;
+    left:-10%;
+    width:300px;
+}
+.showme2{
+    left:0%;
+}
 
 
 // @media only screen and (max-height:1024px){
@@ -663,7 +681,7 @@ col2form{
    
 }
 
-@media only screen and (max-width:847px){
+@media only screen and (max-width:947px){
     .containing-all{
         flex-direction:column;
     }
@@ -682,17 +700,7 @@ col2form{
         margin:auto;
         justify-content: center;
     }
-    header{
-        display:flex;
-        flex-direction:column;
-    }
-    .menu{
-        position:relative;
-        margin:auto;
-       
-    }
-    header{ align-items: center;
-        }  
+ 
 
     
     
@@ -722,6 +730,22 @@ col2form{
     .display-first-wrap{
         width:90%;
     }
+    .containing-all{
+        width:100%;
+        margin:0px;
+    }
+
+    header{
+        display:flex;
+        flex-direction:column;
+    }
+    .menu{
+        position:relative;
+        margin:auto;
+       
+    }
+    header{ align-items: center;
+        }  
 }
 @media only screen and (max-width:700px){
     .row{
@@ -773,6 +797,7 @@ col2form{
         width:50vw;
         padding-top:50px;
     }
+    
 }
 
 
